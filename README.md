@@ -58,65 +58,22 @@
 
 ## Завдання 4.5: realloc(3) не зміг виділити памʼять
 
-**Тестовий приклад:**
-```c
-#include <stdio.h>
-#include <stdlib.h>
+**Тестовий [приклад:](https://github.com/VladHume/pr4/blob/main/realloc_fail.c)**
 
-int main() {
-    void *ptr = malloc(16);
-    if (!ptr) return 1;
-    void *new_ptr = realloc(ptr, (size_t)-1); // дуже велике значення
-    if (!new_ptr) {
-        perror("realloc failed");
-        free(ptr); // оригінальний ptr ще доступний
-    } else {
-        free(new_ptr);
-    }
-    return 0;
-}
-```
+![image](https://github.com/user-attachments/assets/d9afcd22-7b34-44e4-9549-38e2aef31cdc)
+
 
 ## Завдання 4.6: realloc(3) з NULL або розміром 0
 
-```c
-#include <stdio.h>
-#include <stdlib.h>
+[Код](https://github.com/VladHume/pr4/blob/main/realloc_zero.c)
 
-int main() {
-    void *p1 = realloc(NULL, 100); // == malloc(100)
-    void *p2 = realloc(p1, 0);     // == free(p1); return NULL
-    printf("p1 = %p, p2 = %p\n", p1, p2);
-    return 0;
-}
-```
+![image](https://github.com/user-attachments/assets/1201591d-20d9-4b27-bc88-e69492e8ef3b)
 
-**Висновок:**
-- `realloc(NULL, size)` = `malloc(size)`
-- `realloc(ptr, 0)` = `free(ptr); return NULL`
 
 ## Завдання 4.7: Використання reallocarray(3)
 
-```c
-#include <stdlib.h>
-#include <stdio.h>
-#include <malloc.h>
+[Код](https://github.com/VladHume/pr4/blob/main/reallocarray_test.c)
 
-struct sbar { int x; };
+![image](https://github.com/user-attachments/assets/67fd5833-b4e5-46d8-909c-2771949d118e)
 
-int main() {
-    struct sbar *ptr = calloc(1000, sizeof(struct sbar));
-    if (!ptr) return 1;
-    struct sbar *newptr = reallocarray(ptr, 500, sizeof(struct sbar));
-    if (!newptr) {
-        perror("reallocarray failed");
-        free(ptr);
-    } else {
-        free(newptr);
-    }
-    return 0;
-}
-```
-
-**Відмінність:** `reallocarray` безпечніший при переповненні розміру (захист від `size_t` overflow).
 
