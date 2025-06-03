@@ -33,24 +33,13 @@
 
 ## Завдання 4.3: malloc(0)
 
-**Код:**
-```c
-#include <stdio.h>
-#include <stdlib.h>
+**[Код](https://github.com/VladHume/pr4/blob/main/malloc_zero.c):**
 
-int main() {
-    void *p = malloc(0);
-    printf("malloc(0) returned: %p\n", p);
-    free(p); // безпечно
-    return 0;
-}
-```
-
-**Аналіз через ltrace:**
+**Аналіз:**
 ```bash
-cc malloc0.c -o malloc0
-ltrace ./malloc0
+./malloc_zero
 ```
+![image](https://github.com/user-attachments/assets/47a05f28-0dbb-4f73-9c29-3420c98845b7)
 
 **Висновок:** malloc(0) може повернути:
 - `NULL` або
@@ -58,31 +47,14 @@ ltrace ./malloc0
 
 ## Завдання 4.4: Помилка у циклі malloc/free
 
-**Проблемний код:**
-```c
-void *ptr = NULL;
-while (<some-condition-is-true>) {
-    if (!ptr)
-        ptr = malloc(n);
-    [... використання ptr ...]
-    free(ptr);
-}
-```
+**Проблемний [код](https://github.com/VladHume/pr4/blob/main/malloc_wrong_loop.c):**
 
-**Помилка:**
-- `malloc` викликається один раз, а `free` — кожен цикл.
-- Другий прохід → ptr = NULL → `if (!ptr)` істинно → але памʼять уже звільнена.
-- Використання після `free`.
+![image](https://github.com/user-attachments/assets/b23c2e4a-c879-468c-a062-71a4a1b05da8)
 
-**Правильний варіант:**
-```c
-void *ptr;
-while (<some-condition-is-true>) {
-    ptr = malloc(n);
-    [... використання ptr ...]
-    free(ptr);
-}
-```
+**Правильний [варіант](https://github.com/VladHume/pr4/blob/main/malloc_fixed_loop.c):**
+
+![image](https://github.com/user-attachments/assets/f44c72f7-0ec3-42bf-98d4-d1d9ee72b60f)
+
 
 ## Завдання 4.5: realloc(3) не зміг виділити памʼять
 
