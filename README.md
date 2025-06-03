@@ -120,14 +120,3 @@ int main() {
 
 **Відмінність:** `reallocarray` безпечніший при переповненні розміру (захист від `size_t` overflow).
 
-## Компіляція в FreeBSD:
-
-```sh
-cc test.c -o test
-./test
-```
-
-Аналіз системних викликів:
-```sh
-ltrace ./test
-```
