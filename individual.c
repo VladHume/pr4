@@ -22,9 +22,9 @@ int main() {
 
     // Перевірка
     if (ptr1 == ptr2) {
-        printf("✅ malloc повернув ту саму адресу після free\n");
+        printf("malloc returned same addres free\n");
     } else {
-        printf("❌ malloc повернув іншу адресу\n");
+        printf("malloc returned other addres\n");
     }
 
     free(ptr2);
