@@ -76,4 +76,9 @@
 
 ![image](https://github.com/user-attachments/assets/67fd5833-b4e5-46d8-909c-2771949d118e)
 
+## Завдання по варіантах
+[Код](https://github.com/VladHume/pr4/blob/main/individual.c)
+
+![image](https://github.com/user-attachments/assets/47490519-b780-4230-b236-af8032c939db)
+
 
