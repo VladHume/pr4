@@ -8,12 +8,14 @@
 - Значення `2^64` неможливо, бо воно виходить за межі діапазону.
 
 **Запустимо[max_malloc.c](https://github.com/VladHume/pr4/blob/main/max_malloc.c):**
+
 ![image](https://github.com/user-attachments/assets/32aebd65-07ec-48a4-ad5f-0ee228805ff0)
 
 
 ## Завдання 4.2: Від’ємне значення malloc(3)
 
 **Тестовий випадок [malloc_overflow.c](https://github.com/VladHume/pr4/blob/main/malloc_overflow.c):**
+
 ![image](https://github.com/user-attachments/assets/ece4852d-8339-4467-b2ce-71d95ee74ca7)
 Маємо:
 
